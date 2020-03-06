@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import flag from "./flagsofworld2.jpg";
+import reactDom from "react-dom";
+import React, { Component } from "react";
+import Nav from "./Nav.js";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    // constructor() {
+    //   super();
+    //   this.state = {
+    //     Country: "http://localhost:8080/models"
+    //   };
+    // }
+    // componentDidMount() {
+    let url = "http://localhost:8080/models";
+    fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .then(res => {
+        // console.log(json);
+        // this.setState({ Country: json.attachments[0].textgit });
+        console.log(res);
+      });
+
+    return (
+      <div className="mainHead">
+        <h1>Countries, Capitals and Languages</h1>
+        <img src={flag} />
+        <Nav />
+      </div>
+
+      // <div></div>
+    );
+  }
 }
 
 export default App;
